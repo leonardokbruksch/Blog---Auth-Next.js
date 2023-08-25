@@ -1,9 +1,10 @@
 import { SingInButton } from "@/components/buttons";
 import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 export default async function Home() {
 
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (!session) {
     return (
@@ -20,7 +21,6 @@ export default async function Home() {
       <p>
         A next-gen social media app to connect with frens inspired by MySpace
       </p>
-      <p>To get started, sign up for an account</p>
     </div>
   );
 }
